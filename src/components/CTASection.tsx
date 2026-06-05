@@ -1,74 +1,106 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { hotelData } from '@/data/hotel';
+import { MagneticButton } from './MagneticButton';
 
-const PhoneIcon = ({ className = 'w-5 h-5' }: { className?: string } = {}) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-  </svg>
-);
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function CTASection() {
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ['-6%', '6%']);
+
   return (
-    <section ref={sectionRef} className="py-20 lg:py-32 gradient-dark text-white">
-      <div className="container">
+    <section
+      ref={sectionRef}
+      className="relative py-24 lg:py-36 overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, #0d1f16 0%, #0B0B0C 50%, #0d1826 100%)' }}
+    >
+      {/* Parallax background layer */}
+      <motion.div
+        className="absolute inset-0 opacity-[0.06]"
+        style={{ y: bgY }}
+        aria-hidden
+      >
+        <div className="w-full h-full"
+          style={{
+            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(200,169,106,0.3) 80px), repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(200,169,106,0.3) 80px)',
+          }}
+        />
+      </motion.div>
+
+      <div className="relative container">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.8 }}
           className="text-center max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1.1, ease }}
         >
-          <h2 className="font-display text-4xl lg:text-6xl font-light mb-10 lg:mb-12">
-            Tatil Hayalı Burada Başlıyor
+          {/* Badge */}
+          <motion.span
+            className="inline-block px-4 py-1.5 bg-accent/15 text-accent rounded-soft text-[10px] font-light tracking-[0.3em] uppercase mb-10"
+            initial={{ opacity: 0, filter: 'blur(4px)' }}
+            animate={isInView ? { opacity: 1, filter: 'blur(0px)' } : {}}
+            transition={{ duration: 1.0, ease, delay: 0.1 }}
+          >
+            Rezervasyon
+          </motion.span>
+
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-textPrimary mb-8 lg:mb-10 leading-tight">
+            Tatil Hayali Burada Başlıyor
           </h2>
 
-          <p className="text-lg lg:text-xl text-white/85 font-light mb-16 lg:mb-20 leading-relaxed">
-            Ultra her şey dahil konseptiyle, Marmaris'in kalbinde beklenen o eşsiz tatil deneyimi sizi bekliyor.
-          </p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 lg:mb-20"
+          <motion.p
+            className="text-base sm:text-lg text-textSecondary font-light mb-14 lg:mb-16 leading-relaxed max-w-xl mx-auto"
+            initial={{ opacity: 0, y: 18 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1.1, ease, delay: 0.18 }}
           >
-            <motion.a
-              href={hotelData.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary-gold w-full sm:w-auto text-center"
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
-            >
+            Ultra her şey dahil konseptiyle, Marmaris&apos;in kalbinde beklenen o eşsiz tatil deneyimi sizi bekliyor.
+          </motion.p>
+
+          {/* Magnetic CTAs */}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14 lg:mb-16"
+            initial={{ opacity: 0, y: 18 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1.1, ease, delay: 0.28 }}
+          >
+            <MagneticButton href={hotelData.bookingUrl} primary external>
               Şimdi Rezervasyon Yap
-            </motion.a>
-            <motion.a
+            </MagneticButton>
+            <MagneticButton
               href={`tel:${hotelData.phone.replace(/\s/g, '')}`}
-              className="border border-white/40 text-white px-8 py-3 font-medium text-sm uppercase tracking-wider transition-all duration-400 flex items-center justify-center gap-2 w-full sm:w-auto bg-white/5 hover:bg-white/10 hover:border-white/60"
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
+              light
             >
-              <PhoneIcon className="w-4 h-4" />
               Bizi Arayın
-            </motion.a>
+            </MagneticButton>
           </motion.div>
 
+          {/* Contact info */}
           <motion.div
+            className="pt-12 border-t border-white/10"
             initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="pt-16 border-t border-white/10"
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1.0, delay: 0.4 }}
           >
-            <p className="text-white/70 mb-6 text-xs uppercase tracking-widest font-light">İletişim Bilgileri</p>
-            <a href={`tel:${hotelData.phone.replace(/\s/g, '')}`} className="text-3xl lg:text-4xl font-display font-light mb-6 block hover:text-primary transition-colors">
+            <p className="text-textSecondary/50 mb-5 text-[10px] uppercase tracking-[0.3em] font-light">
+              İletişim
+            </p>
+            <a
+              href={`tel:${hotelData.phone.replace(/\s/g, '')}`}
+              className="font-display text-2xl sm:text-3xl lg:text-4xl font-light text-textPrimary hover:text-accent transition-colors duration-400 block mb-4"
+            >
               {hotelData.phone}
             </a>
-            <p className="text-white/60 text-xs font-light tracking-wide">
+            <p className="text-textSecondary/40 text-xs font-light tracking-wider">
               Turizm İşletme Belgesi: 12737
             </p>
           </motion.div>

@@ -1,144 +1,159 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Phone, ChevronDown } from 'lucide-react';
 import { hotelData } from '@/data/hotel';
+import { MagneticButton } from './MagneticButton';
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.3 + i * 0.15,
-        duration: 0.9,
-      },
-    }),
-  };
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  });
 
-  const buttonVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 1.2,
-        duration: 0.9,
-      },
-    },
-  };
+  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.65], [0, 0.55]);
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-background"
+      className="relative w-full h-screen overflow-hidden bg-background"
     >
-      {/* YouTube Background Video - Full Screen */}
-      <div className="absolute inset-0 overflow-hidden bg-background">
+      {/* Cinematic video – slow zoom on load */}
+      <motion.div
+        className="absolute inset-[-4%] overflow-hidden"
+        initial={{ scale: 1.12 }}
+        animate={{ scale: 1.04 }}
+        transition={{ duration: 11, ease: [0.16, 1, 0.3, 1] }}
+      >
         <iframe
           src="https://www.youtube.com/embed/WAO_ECvzvxA?autoplay=1&mute=1&loop=1&playlist=WAO_ECvzvxA&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0"
           allow="autoplay; encrypted-media"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-screen min-w-full min-h-[56.25vw] pointer-events-none border-0 opacity-40"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-screen min-w-full min-h-[56.25vw] pointer-events-none border-0 opacity-45"
           title="background video"
         />
-      </div>
+      </motion.div>
 
-      {/* Dark overlay for luxury readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/70" />
+      {/* Static gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/20 to-background/80 z-[1]" />
 
-      {/* Content Container - Centered, spacious */}
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center max-w-4xl mx-auto"
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Location Badge - Minimal, whisper */}
+      {/* Scroll-driven darkening */}
+      <motion.div
+        className="absolute inset-0 bg-background z-[2]"
+        style={{ opacity: overlayOpacity }}
+      />
+
+      {/* Content with parallax */}
+      <motion.div
+        className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6"
+        style={{ y: contentY }}
+      >
+        <div className="text-center w-full max-w-5xl mx-auto">
+
+          {/* Location badge */}
           <motion.div
-            custom={0}
-            variants={textVariants}
-            className="mb-12 lg:mb-16"
+            className="mb-10 lg:mb-14"
+            initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1.4, ease, delay: 0.25 }}
           >
-            <span className="inline-block px-6 py-2 text-xs font-light tracking-widest uppercase text-textSecondary border border-divider backdrop-blur-sm rounded-soft">
-              Marmaris, Muğla
+            <span className="inline-block px-6 py-2 text-[10px] font-light tracking-[0.32em] uppercase text-textSecondary/75 border border-divider/60 backdrop-blur-sm rounded-soft">
+              Marmaris · Muğla · Türkiye
             </span>
           </motion.div>
 
-          {/* Main Headline - Cinematic, whisper loud */}
-          <motion.h1
-            custom={1}
-            variants={textVariants}
-            className="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-light text-textPrimary mb-8 lg:mb-12 leading-tight tracking-tight"
-          >
-            Grand Yazıcı
-          </motion.h1>
+          {/* Title – word-by-word blur reveal */}
+          <h1 className="font-display font-light text-textPrimary leading-none tracking-tight mb-8 lg:mb-10">
+            {['Grand', 'Yazıcı'].map((word, i) => (
+              <motion.span
+                key={word}
+                className="inline-block mr-[0.2em] last:mr-0 text-[14vw] sm:text-[11vw] lg:text-[9.5vw] xl:text-[8.5vw]"
+                initial={{ opacity: 0, y: 48, filter: 'blur(18px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 1.5, ease, delay: 0.5 + i * 0.22 }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </h1>
 
-          {/* Subheading - Editorial, restrained */}
-          <motion.h2
-            custom={2}
-            variants={textVariants}
-            className="font-light text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-textSecondary mb-16 lg:mb-24 max-w-4xl mx-auto leading-relaxed"
-          >
-            <div>Lüks ve Huzurun</div>
-            <div>Mükemmel Senfonisi</div>
-          </motion.h2>
+          {/* Expanding gold line */}
+          <div className="flex justify-center mb-9 lg:mb-12">
+            <motion.div
+              className="h-px bg-accent/65"
+              initial={{ width: 0 }}
+              animate={{ width: '3rem' }}
+              transition={{ duration: 1.8, ease, delay: 1.0 }}
+            />
+          </div>
 
-          {/* Supporting Tagline - Quiet narrative */}
+          {/* Subtitle lines */}
+          <div className="mb-10 lg:mb-14 space-y-1">
+            {['Lüks ve Huzurun', 'Mükemmel Senfonisi'].map((line, i) => (
+              <motion.p
+                key={line}
+                className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-textSecondary font-light leading-relaxed"
+                initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 1.3, ease, delay: 1.1 + i * 0.16 }}
+              >
+                {line}
+              </motion.p>
+            ))}
+          </div>
+
+          {/* Tagline */}
           <motion.p
-            custom={3}
-            variants={textVariants}
-            className="text-lg lg:text-xl text-textSecondary font-light max-w-2xl mx-auto leading-relaxed mb-20 lg:mb-24"
+            className="text-sm text-textSecondary/55 font-light max-w-sm mx-auto leading-relaxed mb-12 lg:mb-14 tracking-wide"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.6, delay: 1.5 }}
           >
             Ultra her şey dahil konseptiyle, tatil hayaliniz burada yaşanmaya başlar
           </motion.p>
 
-          {/* Single primary CTA - Restraint is luxury */}
+          {/* CTA Buttons */}
           <motion.div
-            custom={4}
-            variants={buttonVariants}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center relative z-20"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease, delay: 1.72 }}
           >
-            <motion.a
-              href={hotelData.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-12 py-4 text-sm font-light tracking-wider uppercase bg-accent text-background hover:bg-accent/90 transition-all duration-500 rounded-soft"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
+            <MagneticButton href={hotelData.bookingUrl} primary external>
               Şimdi Rezervasyon Yap
-            </motion.a>
-
-            <motion.a
+            </MagneticButton>
+            <MagneticButton
               href={`tel:${hotelData.phone.replace(/\s/g, '')}`}
-              className="flex items-center gap-2 px-8 py-4 text-sm font-light tracking-wider uppercase text-accent border border-accent hover:bg-accent/10 transition-all duration-500 rounded-soft"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              icon={<Phone size={13} />}
             >
-              <Phone size={16} />
               Ara
-            </motion.a>
+            </MagneticButton>
+          </motion.div>
+        </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, delay: 2.3 }}
+        >
+          <span className="text-[9px] font-light tracking-[0.38em] uppercase text-textSecondary/45">
+            Keşfet
+          </span>
+          <motion.div
+            animate={{ y: [0, 7, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <ChevronDown size={14} className="text-textSecondary/45" />
           </motion.div>
         </motion.div>
-
-        {/* Scroll Indicator - Breathing, subtle */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-xs font-light tracking-widest uppercase text-textSecondary">
-              Keşfet
-            </span>
-            <ChevronDown size={20} className="text-textSecondary" />
-          </div>
-        </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

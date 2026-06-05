@@ -2,44 +2,65 @@
 
 import { useState, useRef } from 'react';
 import Image from 'next/image';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { restaurants } from '@/data/hotel';
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const RestaurantCard = ({ restaurant, index }: { restaurant: any; index: number }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const delay = index * 0.08;
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.8, delay: index * 0.08 }}
-      className="group overflow-hidden"
+      initial={{ opacity: 0, y: 36 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1.0, ease, delay }}
+      className="group"
     >
-      <div className="relative overflow-hidden h-64 mb-6">
-        <Image
-          src={restaurant.image}
-          alt={restaurant.name}
-          fill
-          className="object-cover group-hover:scale-103 transition-transform duration-700 ease-in-out"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      {/* Mask reveal image */}
+      <div className="relative overflow-hidden h-60 mb-5 rounded-card">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ clipPath: 'inset(0 0 100% 0)' }}
+          animate={isInView ? { clipPath: 'inset(0 0 0% 0)' } : {}}
+          transition={{ duration: 1.3, ease, delay: delay + 0.1 }}
+        >
+          <motion.div
+            className="relative w-full h-full"
+            initial={{ scale: 1.1 }}
+            animate={isInView ? { scale: 1.0 } : {}}
+            transition={{ duration: 1.5, ease, delay: delay + 0.1 }}
+          >
+            <Image
+              src={restaurant.image}
+              alt={restaurant.name}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Gold bottom line on hover */}
+        <motion.div
+          className="absolute bottom-0 left-0 h-[2px] bg-accent"
+          initial={{ width: '0%' }}
+          whileHover={{ width: '100%' }}
+          transition={{ duration: 0.5, ease }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-          <button className="btn-primary text-sm py-2 px-4 w-full">
-            Daha Fazla
-          </button>
-        </div>
       </div>
 
       <div>
-        <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-light tracking-wider uppercase mb-3">
+        <span className="inline-block px-2.5 py-1 bg-accent/10 text-accent text-[10px] font-light tracking-widest uppercase mb-2.5 rounded-soft">
           {restaurant.cuisine}
         </span>
-        <h3 className="font-display text-xl font-light text-accent mb-2">
+        <h3 className="font-display text-lg lg:text-xl font-light text-textPrimary mb-1.5 leading-snug">
           {restaurant.name}
         </h3>
-        <p className="text-text-light text-sm font-light">
+        <p className="text-textSecondary text-sm font-light leading-relaxed">
           {restaurant.description}
         </p>
       </div>
@@ -47,78 +68,91 @@ const RestaurantCard = ({ restaurant, index }: { restaurant: any; index: number 
   );
 };
 
+const tabs = [
+  { key: 'all', label: 'Tümü' },
+  { key: 'restaurant', label: 'Restoranlar' },
+  { key: 'bar', label: 'Barlar' },
+] as const;
+
 export default function DiningSection() {
   const [activeTab, setActiveTab] = useState<'all' | 'restaurant' | 'bar'>('all');
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-200px' });
+  const isInView = useInView(sectionRef, { once: true, margin: '-150px' });
 
-  const filteredRestaurants =
-    activeTab === 'all'
-      ? restaurants
-      : restaurants.filter(r => r.type === activeTab);
+  const filtered = activeTab === 'all'
+    ? restaurants
+    : restaurants.filter((r) => r.type === activeTab);
 
   return (
-    <section id="dining" className="py-20 lg:py-32 bg-ivory">
+    <section id="dining" className="py-24 lg:py-36 bg-background">
       <div className="container">
+
+        {/* Header */}
         <motion.div
           ref={sectionRef}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20 lg:mb-32"
+          className="text-center mb-16 lg:mb-22"
+          initial={{ opacity: 0, y: 36 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1.1, ease }}
         >
-          <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-xs font-light tracking-widest uppercase mb-6">
+          <motion.span
+            className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-soft text-[10px] font-light tracking-[0.3em] uppercase mb-6"
+            initial={{ opacity: 0, filter: 'blur(4px)' }}
+            animate={isInView ? { opacity: 1, filter: 'blur(0px)' } : {}}
+            transition={{ duration: 1.0, ease, delay: 0.1 }}
+          >
             Mutfak
-          </span>
-          <h2 className="font-display text-4xl lg:text-6xl font-light text-accent mb-8 lg:mb-10">
+          </motion.span>
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-textPrimary mb-6 lg:mb-8 leading-tight">
             Damağın Seyahati
           </h2>
-          <p className="text-text-secondary text-lg lg:text-xl font-light max-w-2xl mx-auto">
-            Şef imzalı lezzetler, altı restorana dağılmış dünya usulü yemekler
+          <p className="text-textSecondary text-base sm:text-lg font-light max-w-xl mx-auto leading-relaxed">
+            Şef imzalı lezzetler, altı restorana dağılmış dünya mutfağı
           </p>
         </motion.div>
 
         {/* Tabs */}
         <motion.div
+          className="flex justify-center gap-1 mb-14 lg:mb-20"
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex justify-center gap-4 mb-12 lg:mb-20"
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1.0, delay: 0.25 }}
         >
-          {[
-            { key: 'all', label: 'Tümü' },
-            { key: 'restaurant', label: 'Restoranlar' },
-            { key: 'bar', label: 'Barlar' },
-          ].map(tab => (
-            <motion.button
+          {tabs.map((tab) => (
+            <button
               key={tab.key}
-              onClick={() => setActiveTab(tab.key as any)}
-              className={`px-6 py-2 font-medium text-sm rounded-full transition-all ${
-                activeTab === tab.key
-                  ? 'bg-primary text-white'
-                  : 'bg-sand text-accent hover:bg-sand/80'
+              onClick={() => setActiveTab(tab.key)}
+              className={`relative px-6 py-2.5 text-[11px] font-light tracking-[0.2em] uppercase transition-colors duration-300 rounded-soft ${
+                activeTab === tab.key ? 'text-background' : 'text-textSecondary hover:text-textPrimary'
               }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
-              {tab.label}
-            </motion.button>
+              {activeTab === tab.key && (
+                <motion.span
+                  layoutId="dining-tab-bg"
+                  className="absolute inset-0 bg-accent rounded-soft"
+                  transition={{ duration: 0.4, ease }}
+                />
+              )}
+              <span className="relative z-10">{tab.label}</span>
+            </button>
           ))}
         </motion.div>
 
         {/* Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
-        >
-          {filteredRestaurants.map((restaurant, index) => (
-            <RestaurantCard
-              key={restaurant.id}
-              restaurant={restaurant}
-              index={index}
-            />
-          ))}
-        </motion.div>
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={activeTab}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.4 }}
+          >
+            {filtered.map((restaurant, index) => (
+              <RestaurantCard key={restaurant.id} restaurant={restaurant} index={index} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

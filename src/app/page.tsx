@@ -5,6 +5,7 @@ import VideoSection from '@/components/VideoSection';
 import RoomsSection from '@/components/RoomsSection';
 import AmenitiesSection from '@/components/AmenitiesSection';
 import DiningSection from '@/components/DiningSection';
+import GallerySection from '@/components/GallerySection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 import { FloatingBookingCTA } from '@/components/FloatingBookingCTA';
@@ -19,6 +20,7 @@ export default function Home() {
       <RoomsSection />
       <AmenitiesSection />
       <DiningSection />
+      <GallerySection />
       <CTASection />
       <Footer />
       <FloatingBookingCTA />

@@ -6,7 +6,7 @@ export const hotelData = {
   phone: '+90 252 417 73 12',
   bookingUrl: 'https://grandyazicihotels.platformeva.com/',
   description: 'Ultra Her Şey Dahil Konseptiyle Lüks Tatil',
-  tagline: 'Tatil ultra her şey dahilse tatildir! Marmaris\' in kalbinde huzur, konfor, lüks, eğlence ve çok daha fazlası sizi bekliyor!',
+  tagline: 'Tatil ultra her şey dahilse tatildir! Marmaris\'in kalbinde huzur, konfor, lüks, eğlence ve çok daha fazlası sizi bekliyor!',
 };
 
 export const rooms: Room[] = [
@@ -126,7 +126,7 @@ export const restaurants: Restaurant[] = [
     name: 'Grand Bar',
     cuisine: 'Kokteyl / İçecek',
     description: 'Premium Barlar',
-    image: '/restaurants/grand-bar.webp',
+    image: '/bar/grand-bar.webp',
     type: 'bar',
   },
   {
@@ -134,7 +134,7 @@ export const restaurants: Restaurant[] = [
     name: 'Coffee Corner',
     cuisine: 'Kahve / Tatlı',
     description: 'Kahve ve Atıştırmalık',
-    image: '/restaurants/coffee-corner.webp',
+    image: '/bar/coffee-corner.webp',
     type: 'bar',
   },
   {
@@ -142,7 +142,7 @@ export const restaurants: Restaurant[] = [
     name: 'Pool Bar',
     cuisine: 'Kokteyl / Soğuk İçecek',
     description: 'Havuz Barı',
-    image: '/restaurants/pool-bar.webp',
+    image: '/bar/pool-bar.webp',
     type: 'bar',
   },
   {
@@ -150,7 +150,7 @@ export const restaurants: Restaurant[] = [
     name: 'Beach Bar',
     cuisine: 'Kokteyl / Serinletici İçecek',
     description: 'Plaj Barı',
-    image: '/restaurants/beach-bar.webp',
+    image: '/bar/beach-bar.webp',
     type: 'bar',
   },
 ];

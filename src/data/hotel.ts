@@ -78,7 +78,7 @@ export const restaurants: Restaurant[] = [
     name: 'Ege Restaurant',
     cuisine: 'Türk / Uluslararası',
     description: 'Ana Restoran',
-    image: 'https://turban-landing.grandyazicihotels.com/content-images/restaurants/ege/thumb-d.jpg',
+    image: '/restaurants/ege-restaurant.webp',
     type: 'restaurant',
   },
   {
@@ -86,7 +86,7 @@ export const restaurants: Restaurant[] = [
     name: 'La Querida',
     cuisine: 'Balık / Deniz Ürünleri',
     description: 'Balık A\'la Carte Restoranı',
-    image: 'https://turban-landing.grandyazicihotels.com/content-images/restaurants/laquerida/thumb-d.jpg',
+    image: '/restaurants/la-querida.webp',
     type: 'restaurant',
   },
   {
@@ -94,7 +94,7 @@ export const restaurants: Restaurant[] = [
     name: 'Le Farfelle',
     cuisine: 'İtalyan',
     description: 'İtalyan A\'la Carte Restoranı & Snack Bar',
-    image: 'https://turban-landing.grandyazicihotels.com/content-images/restaurants/lefarfelle/thumb-d.jpg',
+    image: '/restaurants/le-farfelle.webp',
     type: 'restaurant',
   },
   {
@@ -102,7 +102,7 @@ export const restaurants: Restaurant[] = [
     name: 'Steak House',
     cuisine: 'Et / Grill',
     description: 'Et A\'la Carte Restoranı & Snack Bar',
-    image: 'https://turban-landing.grandyazicihotels.com/content-images/restaurants/steakhouse/thumb-d.jpg',
+    image: '/restaurants/steak-house.webp',
     type: 'restaurant',
   },
   {
@@ -110,7 +110,7 @@ export const restaurants: Restaurant[] = [
     name: 'Asya',
     cuisine: 'Uzak Doğu / Asya',
     description: 'Uzak Doğu A\'la Carte Restoranı',
-    image: 'https://turban-landing.grandyazicihotels.com/content-images/restaurants/asya/thumb-d.jpg',
+    image: '/restaurants/asya.webp',
     type: 'restaurant',
   },
   {
@@ -118,7 +118,7 @@ export const restaurants: Restaurant[] = [
     name: 'Kebap House',
     cuisine: 'Türk',
     description: 'Türk A\'la Carte Restoranı',
-    image: 'https://turban-landing.grandyazicihotels.com/content-images/restaurants/kebaphouse/thumb-d.jpg',
+    image: '/restaurants/kebap-house.webp',
     type: 'restaurant',
   },
   {
@@ -126,7 +126,7 @@ export const restaurants: Restaurant[] = [
     name: 'Grand Bar',
     cuisine: 'Kokteyl / İçecek',
     description: 'Premium Barlar',
-    image: 'https://turban-landing.grandyazicihotels.com/content-images/bars/grand-bar/thumb-d.jpg',
+    image: '/restaurants/grand-bar.webp',
     type: 'bar',
   },
   {
@@ -134,7 +134,7 @@ export const restaurants: Restaurant[] = [
     name: 'Coffee Corner',
     cuisine: 'Kahve / Tatlı',
     description: 'Kahve ve Atıştırmalık',
-    image: 'https://turban-landing.grandyazicihotels.com/content-images/bars/coffee-corner/thumb-d.jpg',
+    image: '/restaurants/coffee-corner.webp',
     type: 'bar',
   },
   {
@@ -142,7 +142,7 @@ export const restaurants: Restaurant[] = [
     name: 'Pool Bar',
     cuisine: 'Kokteyl / Soğuk İçecek',
     description: 'Havuz Barı',
-    image: 'https://turban-landing.grandyazicihotels.com/content-images/bars/pool-bar/thumb-d.jpg',
+    image: '/restaurants/pool-bar.webp',
     type: 'bar',
   },
   {
@@ -150,7 +150,7 @@ export const restaurants: Restaurant[] = [
     name: 'Beach Bar',
     cuisine: 'Kokteyl / Serinletici İçecek',
     description: 'Plaj Barı',
-    image: 'https://turban-landing.grandyazicihotels.com/content-images/bars/beach-bar/thumb-d.jpg',
+    image: '/restaurants/beach-bar.webp',
     type: 'bar',
   },
 ];

@@ -2,11 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Phone, ChevronDown } from 'lucide-react';
-import { hotelData } from '@/data/hotel';
-import { MagneticButton } from './MagneticButton';
-
-const ease = [0.16, 1, 0.3, 1] as const;
+import { ChevronDown } from 'lucide-react';
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -16,7 +12,6 @@ export default function HeroSection() {
     offset: ['start start', 'end start'],
   });
 
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.65], [0, 0.55]);
 
   return (
@@ -48,47 +43,21 @@ export default function HeroSection() {
         style={{ opacity: overlayOpacity }}
       />
 
-      {/* Content with parallax */}
+      {/* Scroll indicator – arrow only, no text */}
       <motion.div
-        className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6"
-        style={{ y: contentY }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, delay: 2.0 }}
       >
-        {/* CTA Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease, delay: 0.8 }}
+          animate={{ y: [0, 7, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <MagneticButton href={hotelData.bookingUrl} primary external>
-            Şimdi Rezervasyon Yap
-          </MagneticButton>
-          <MagneticButton
-            href={`tel:${hotelData.phone.replace(/\s/g, '')}`}
-            icon={<Phone size={13} />}
-          >
-            Ara
-          </MagneticButton>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 2.3 }}
-        >
-          <span className="text-[9px] font-light tracking-[0.38em] uppercase text-textSecondary/45">
-            Keşfet
-          </span>
-          <motion.div
-            animate={{ y: [0, 7, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <ChevronDown size={14} className="text-textSecondary/45" />
-          </motion.div>
+          <ChevronDown size={16} className="text-textSecondary/40" />
         </motion.div>
       </motion.div>
     </section>
   );
 }
+

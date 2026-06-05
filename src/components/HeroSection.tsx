@@ -53,88 +53,23 @@ export default function HeroSection() {
         className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6"
         style={{ y: contentY }}
       >
-        <div className="text-center w-full max-w-5xl mx-auto">
-
-          {/* Location badge */}
-          <motion.div
-            className="mb-10 lg:mb-14"
-            initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 1.4, ease, delay: 0.25 }}
+        {/* CTA Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease, delay: 0.8 }}
+        >
+          <MagneticButton href={hotelData.bookingUrl} primary external>
+            Şimdi Rezervasyon Yap
+          </MagneticButton>
+          <MagneticButton
+            href={`tel:${hotelData.phone.replace(/\s/g, '')}`}
+            icon={<Phone size={13} />}
           >
-            <span className="inline-block px-6 py-2 text-[10px] font-light tracking-[0.32em] uppercase text-textSecondary/75 border border-divider/60 backdrop-blur-sm rounded-soft">
-              Marmaris · Muğla · Türkiye
-            </span>
-          </motion.div>
-
-          {/* Title – word-by-word blur reveal */}
-          <h1 className="font-display font-light text-textPrimary leading-none tracking-tight mb-8 lg:mb-10">
-            {['Grand', 'Yazıcı'].map((word, i) => (
-              <motion.span
-                key={word}
-                className="inline-block mr-[0.2em] last:mr-0 text-[14vw] sm:text-[11vw] lg:text-[9.5vw] xl:text-[8.5vw]"
-                initial={{ opacity: 0, y: 48, filter: 'blur(18px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ duration: 1.5, ease, delay: 0.5 + i * 0.22 }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </h1>
-
-          {/* Expanding gold line */}
-          <div className="flex justify-center mb-9 lg:mb-12">
-            <motion.div
-              className="h-px bg-accent/65"
-              initial={{ width: 0 }}
-              animate={{ width: '3rem' }}
-              transition={{ duration: 1.8, ease, delay: 1.0 }}
-            />
-          </div>
-
-          {/* Subtitle lines */}
-          <div className="mb-10 lg:mb-14 space-y-1">
-            {['Lüks ve Huzurun', 'Mükemmel Senfonisi'].map((line, i) => (
-              <motion.p
-                key={line}
-                className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-textSecondary font-light leading-relaxed"
-                initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ duration: 1.3, ease, delay: 1.1 + i * 0.16 }}
-              >
-                {line}
-              </motion.p>
-            ))}
-          </div>
-
-          {/* Tagline */}
-          <motion.p
-            className="text-sm text-textSecondary/55 font-light max-w-sm mx-auto leading-relaxed mb-12 lg:mb-14 tracking-wide"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.6, delay: 1.5 }}
-          >
-            Ultra her şey dahil konseptiyle, tatil hayaliniz burada yaşanmaya başlar
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease, delay: 1.72 }}
-          >
-            <MagneticButton href={hotelData.bookingUrl} primary external>
-              Şimdi Rezervasyon Yap
-            </MagneticButton>
-            <MagneticButton
-              href={`tel:${hotelData.phone.replace(/\s/g, '')}`}
-              icon={<Phone size={13} />}
-            >
-              Ara
-            </MagneticButton>
-          </motion.div>
-        </div>
+            Ara
+          </MagneticButton>
+        </motion.div>
 
         {/* Scroll indicator */}
         <motion.div

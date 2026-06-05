@@ -2,18 +2,10 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Waves, Zap, Music2, Dumbbell, Baby } from 'lucide-react';
+import Image from 'next/image';
 import { amenities } from '@/data/hotel';
 
 const ease = [0.16, 1, 0.3, 1] as const;
-
-const iconMap: Record<string, React.ReactNode> = {
-  Water: <Waves size={22} strokeWidth={1.5} />,
-  Sports: <Zap size={22} strokeWidth={1.5} />,
-  Entertainment: <Music2 size={22} strokeWidth={1.5} />,
-  Wellness: <Dumbbell size={22} strokeWidth={1.5} />,
-  Kids: <Baby size={22} strokeWidth={1.5} />,
-};
 
 const AmenityCard = ({ amenity, index }: { amenity: any; index: number }) => {
   const ref = useRef(null);
@@ -28,11 +20,17 @@ const AmenityCard = ({ amenity, index }: { amenity: any; index: number }) => {
       className="flex flex-col items-center text-center p-6 lg:p-8 rounded-soft hover:bg-accent/5 transition-colors duration-500 group"
     >
       <motion.div
-        className="mb-3.5 text-accent/70 group-hover:text-accent transition-colors duration-400"
+        className="mb-3.5 opacity-70 group-hover:opacity-100 transition-opacity duration-400"
         whileHover={{ y: -3 }}
         transition={{ duration: 0.35, ease }}
       >
-        {iconMap[amenity.category] ?? iconMap.Wellness}
+        <Image
+          src={`/amenities/${encodeURIComponent(amenity.name)}.webp`}
+          alt={amenity.name}
+          width={40}
+          height={40}
+          className="w-10 h-10 object-contain"
+        />
       </motion.div>
       <p className="font-display text-sm lg:text-base font-light text-textPrimary leading-snug">
         {amenity.name}

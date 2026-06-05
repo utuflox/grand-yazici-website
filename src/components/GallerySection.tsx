@@ -87,7 +87,7 @@ export default function GallerySection() {
       <AnimatePresence>
         {lightbox !== null && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/96 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -95,7 +95,7 @@ export default function GallerySection() {
             onClick={() => setLightbox(null)}
           >
             <motion.button
-              className="absolute top-6 right-6 text-textSecondary/60 hover:text-textPrimary transition-colors"
+              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}

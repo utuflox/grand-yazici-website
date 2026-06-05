@@ -53,12 +53,12 @@ export default function CTASection() {
             Rezervasyon
           </motion.span>
 
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-textPrimary mb-8 lg:mb-10 leading-tight">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-white mb-8 lg:mb-10 leading-tight">
             Tatil Hayali Burada Başlıyor
           </h2>
 
           <motion.p
-            className="text-base sm:text-lg text-textSecondary font-light mb-14 lg:mb-16 leading-relaxed max-w-xl mx-auto"
+            className="text-base sm:text-lg text-white/65 font-light mb-14 lg:mb-16 leading-relaxed max-w-xl mx-auto"
             initial={{ opacity: 0, y: 18 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1.1, ease, delay: 0.18 }}
@@ -91,16 +91,16 @@ export default function CTASection() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 1.0, delay: 0.4 }}
           >
-            <p className="text-textSecondary/50 mb-5 text-[10px] uppercase tracking-[0.3em] font-light">
+            <p className="text-white/30 mb-5 text-[10px] uppercase tracking-[0.3em] font-light">
               İletişim
             </p>
             <a
               href={`tel:${hotelData.phone.replace(/\s/g, '')}`}
-              className="font-display text-2xl sm:text-3xl lg:text-4xl font-light text-textPrimary hover:text-accent transition-colors duration-400 block mb-4"
+              className="font-display text-2xl sm:text-3xl lg:text-4xl font-light text-white hover:text-accent transition-colors duration-400 block mb-4"
             >
               {hotelData.phone}
             </a>
-            <p className="text-textSecondary/40 text-xs font-light tracking-wider">
+            <p className="text-white/25 text-xs font-light tracking-wider">
               Turizm İşletme Belgesi: 12737
             </p>
           </motion.div>

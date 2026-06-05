@@ -26,11 +26,13 @@ export default function HeroSection() {
         animate={{ scale: 1.04 }}
         transition={{ duration: 11, ease: [0.16, 1, 0.3, 1] }}
       >
-        <iframe
-          src="https://www.youtube.com/embed/WAO_ECvzvxA?autoplay=1&mute=1&loop=1&playlist=WAO_ECvzvxA&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0"
-          allow="autoplay; encrypted-media"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-screen min-w-full min-h-[56.25vw] pointer-events-none border-0 opacity-45"
-          title="background video"
+        <video
+          src="/hero.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-screen min-w-full min-h-[56.25vw] object-cover pointer-events-none opacity-45"
         />
       </motion.div>
 

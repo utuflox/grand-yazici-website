@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
 const ease = [0.16, 1, 0.3, 1] as const;
-const titleWords = 'Tatil Yeniden Tanımlanıyor'.split(' ');
 
 export default function OpeningStatement() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -14,53 +13,70 @@ export default function OpeningStatement() {
     target: sectionRef,
     offset: ['start end', 'end start'],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [28, -28]);
+  const y = useTransform(scrollYProgress, [0, 1], [24, -24]);
 
   return (
-    <section ref={sectionRef} className="py-28 lg:py-40 px-6 bg-surface overflow-hidden">
-      <motion.div className="container max-w-3xl text-center" style={{ y }}>
+    <section ref={sectionRef} className="py-32 lg:py-48 px-6 bg-surface overflow-hidden">
+      <motion.div className="container max-w-4xl text-center" style={{ y }}>
 
-        {/* Word-by-word blur reveal */}
-        <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-textPrimary mb-10 lg:mb-12 leading-tight flex flex-wrap justify-center gap-x-[0.3em] gap-y-2">
-          {titleWords.map((word, i) => (
+        {/* Location */}
+        <motion.span
+          className="inline-block text-accent/65 text-[10px] font-light tracking-[0.48em] uppercase mb-10 lg:mb-14"
+          initial={{ opacity: 0, y: 14, filter: 'blur(8px)' }}
+          animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          transition={{ duration: 1.2, ease, delay: 0.1 }}
+        >
+          Marmaris · Muğla · Türkiye
+        </motion.span>
+
+        {/* Main title — Grand Yazıcı */}
+        <h2 className="font-display font-light text-textPrimary leading-[0.95] mb-3 lg:mb-4 flex flex-wrap justify-center gap-x-[0.22em]">
+          {['Grand', 'Yazıcı'].map((word, i) => (
             <motion.span
-              key={`${word}-${i}`}
+              key={word}
               className="inline-block"
-              initial={{ opacity: 0, y: 22, filter: 'blur(10px)' }}
+              initial={{ opacity: 0, y: 36, filter: 'blur(16px)' }}
               animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-              transition={{ duration: 1.2, ease, delay: i * 0.12 }}
+              transition={{ duration: 1.4, ease, delay: 0.2 + i * 0.16 }}
             >
               {word}
             </motion.span>
           ))}
         </h2>
 
-        {/* Gold line */}
-        <div className="flex justify-center mb-10 lg:mb-12">
+        {/* Subtitle — Club Turban Thermal */}
+        <div className="flex flex-wrap justify-center gap-x-[0.2em] mb-14 lg:mb-20">
+          {['Club', 'Turban', 'Thermal'].map((word, i) => (
+            <motion.span
+              key={word}
+              className="inline-block font-display text-2xl sm:text-3xl lg:text-[2.25rem] font-light text-accent/75 leading-tight"
+              initial={{ opacity: 0, y: 22, filter: 'blur(10px)' }}
+              animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+              transition={{ duration: 1.2, ease, delay: 0.52 + i * 0.13 }}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </div>
+
+        {/* Gold divider */}
+        <div className="flex justify-center mb-14 lg:mb-18">
           <motion.div
-            className="h-px bg-accent/60"
+            className="h-px bg-accent/45"
             initial={{ width: 0 }}
-            animate={isInView ? { width: '2.5rem' } : {}}
-            transition={{ duration: 1.8, ease, delay: 0.5 }}
+            animate={isInView ? { width: '3rem' } : {}}
+            transition={{ duration: 2.0, ease, delay: 0.9 }}
           />
         </div>
 
+        {/* Tagline */}
         <motion.p
-          className="text-textSecondary text-base sm:text-lg lg:text-xl font-light leading-relaxed mb-6"
-          initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+          className="text-textSecondary text-base sm:text-lg lg:text-xl font-light leading-relaxed max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 22, filter: 'blur(6px)' }}
           animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-          transition={{ duration: 1.2, ease, delay: 0.5 }}
+          transition={{ duration: 1.2, ease, delay: 1.05 }}
         >
-          Marmaris&apos;in kalbinde, dinginlik ve lüksün eşsiz birleşimi sizi karşılamaya hazır.
-        </motion.p>
-
-        <motion.p
-          className="text-textSecondary/70 text-base sm:text-lg font-light leading-relaxed"
-          initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
-          animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-          transition={{ duration: 1.2, ease, delay: 0.72 }}
-        >
-          Grand Yazıcı Club Turban Thermal&apos;de her an özel, her gün yeni bir anı, her akşam bir anısı yaşanır.
+          Tatil ultra her şey dahilse tatildir. Marmaris&apos;in kalbinde huzur, konfor, lüks, eğlence ve çok daha fazlası sizi bekliyor.
         </motion.p>
 
       </motion.div>

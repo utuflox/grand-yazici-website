@@ -173,9 +173,9 @@ export const amenities: Amenity[] = [
 ];
 
 export const navigationLinks = [
-  { label: 'Odalar', href: '#rooms' },
-  { label: 'Tesisler', href: '#amenities' },
-  { label: 'Mutfak', href: '#dining' },
-  { label: 'Galeri', href: '#gallery' },
-  { label: 'İletişim', href: '#contact' },
+  { label: 'Odalar', href: '/odalar' },
+  { label: 'Tesisler', href: '/#amenities' },
+  { label: 'Mutfak', href: '/#dining' },
+  { label: 'Galeri', href: '/#gallery' },
+  { label: 'İletişim', href: '/#contact' },
 ];

@@ -21,8 +21,7 @@ const GalleryItem = ({ img, index, onClick }: { img: typeof images[0]; index: nu
   return (
     <motion.div
       ref={ref}
-      className="relative overflow-hidden rounded-card cursor-zoom-in group"
-      style={{ aspectRatio: index === 0 || index === 3 ? '3/4' : '4/3' }}
+      className="relative overflow-hidden rounded-card cursor-zoom-in group aspect-[4/3]"
       initial={{ opacity: 0, scale: 0.95 }}
       animate={inView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 1.0, ease, delay: index * 0.08 }}

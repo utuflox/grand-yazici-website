@@ -7,6 +7,7 @@ import AmenitiesSection from '@/components/AmenitiesSection';
 import DiningSection from '@/components/DiningSection';
 import GallerySection from '@/components/GallerySection';
 import CTASection from '@/components/CTASection';
+import LocationSection from '@/components/LocationSection';
 import Footer from '@/components/Footer';
 import { FloatingBookingCTA } from '@/components/FloatingBookingCTA';
 
@@ -22,6 +23,7 @@ export default function Home() {
       <DiningSection />
       <GallerySection />
       <CTASection />
+      <LocationSection />
       <Footer />
       <FloatingBookingCTA />
     </main>

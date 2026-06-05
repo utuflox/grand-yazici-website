@@ -27,7 +27,7 @@ export default function HeroSection() {
         transition={{ duration: 11, ease: [0.16, 1, 0.3, 1] }}
       >
         <video
-          src="/hero.mp4"
+          src="/hero.webm"
           autoPlay
           muted
           loop

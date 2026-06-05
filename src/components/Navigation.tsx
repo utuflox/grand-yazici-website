@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { navigationLinks, hotelData } from '@/data/hotel';
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -39,21 +40,17 @@ export default function Navigation() {
           {/* Logo */}
           <motion.a
             href="#"
-            className="flex items-center gap-3"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="w-9 h-9 bg-accent/15 border border-accent/30 rounded-soft flex items-center justify-center">
-              <span className="text-accent text-sm font-display font-light">G</span>
-            </div>
-            <div className="hidden sm:block leading-tight">
-              <p className="text-textPrimary font-display font-light text-sm tracking-widest uppercase">
-                Grand Yazıcı
-              </p>
-              <p className="text-textSecondary/60 text-[10px] tracking-wider font-light">
-                Club Turban Thermal
-              </p>
-            </div>
+            <Image
+              src="/logo.webp"
+              alt="Grand Yazıcı Club Turban Thermal"
+              width={140}
+              height={48}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </motion.a>
 
           {/* Desktop links */}

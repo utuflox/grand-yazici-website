@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #F5F1ED;
+  color: #252525;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 400;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  margin-bottom: 2rem;
+  text-transform: none;
+}
+
+h2 {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 1.08;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 400;
+  letter-spacing: -0.25px;
+  margin-bottom: 1.25rem;
+}
+
+h4 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6B6B6B;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+p + p {
+  margin-top: 1.5rem;
+}
+
+/* Emotional Tagline / Subtitle */
+.tagline, .subtitle {
+  font-size: clamp(18px, 3vw, 24px);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #6B6B6B;
+  letter-spacing: 0;
+}
+
+/* Small Text / Captions */
+small, .caption {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: #A0A0A0;
+}
+
+/* Links */
+a {
+  color: #252525;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #C09573;
+}
+
+/* Buttons */
+button {
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #252525;
+  color: white;
+  padding: 14px 32px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #C09573;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(192, 149, 115, 0.15);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  border: 1px solid #252525;
+  color: #252525;
+  padding: 14px 32px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #252525;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 37, 37, 0.1);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-primary-gold {
+  background-color: #C09573;
+  color: #252525;
+  padding: 14px 32px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary-gold:hover {
+  background-color: #252525;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 37, 37, 0.15);
+}
+
+.btn-primary-gold:active {
+  transform: translateY(0);
+}
+
+/* Image */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Sections */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Smooth scroll */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Selection */
+::selection {
+  background-color: #C09573;
+  color: #ffffff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C09573;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #252525;
+}
+
+/* Container */
+.container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Utility classes */
+.glass-effect {
+  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.gradient-dark {
+  background: linear-gradient(135deg, rgba(37, 37, 37, 0.95) 0%, rgba(37, 37, 37, 0.85) 100%);
+}
+
+.gradient-gold {
+  background: linear-gradient(135deg, #C09573 0%, #A67C52 100%);
+}

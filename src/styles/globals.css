@@ -15,9 +15,9 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #F5F1ED;
-  color: #252525;
+  font-family: 'Inter', sans-serif;
+  background-color: #0B0B0C;
+  color: #F5F5F5;
   line-height: 1.8;
   font-weight: 300;
 }
@@ -76,7 +76,7 @@ h6 {
 }
 
 p {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.8;
   color: #6B6B6B;
@@ -91,7 +91,7 @@ p + p {
 /* Emotional Tagline / Subtitle */
 .tagline, .subtitle {
   font-size: clamp(18px, 3vw, 24px);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   line-height: 1.8;
   color: #6B6B6B;
@@ -108,7 +108,7 @@ small, .caption {
 
 /* Links */
 a {
-  color: #252525;
+  color: #F5F5F5;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -119,7 +119,7 @@ a:hover {
 
 /* Buttons */
 button {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -149,7 +149,7 @@ button {
 
 .btn-secondary {
   border: 1px solid #252525;
-  color: #252525;
+  color: #F5F5F5;
   padding: 14px 32px;
   font-size: 13px;
   font-weight: 500;
@@ -173,7 +173,7 @@ button {
 
 .btn-primary-gold {
   background-color: #C09573;
-  color: #252525;
+  color: #F5F5F5;
   padding: 14px 32px;
   font-size: 13px;
   font-weight: 500;

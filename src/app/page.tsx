@@ -1,7 +1,6 @@
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import OpeningStatement from '@/components/OpeningStatement';
-import VideoSection from '@/components/VideoSection';
 import RoomsSection from '@/components/RoomsSection';
 import AmenitiesSection from '@/components/AmenitiesSection';
 import DiningSection from '@/components/DiningSection';
@@ -17,7 +16,6 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <OpeningStatement />
-      <VideoSection />
       <RoomsSection />
       <AmenitiesSection />
       <DiningSection />

@@ -28,10 +28,30 @@
     /* HERO */
     .hero {
       min-height: 90vh;
-      background: linear-gradient(160deg, #1a472a 0%, #2c5282 60%, #1a3a4a 100%);
+      position: relative;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
       text-align: center; padding: 4rem 1rem; color: #fff;
+      overflow: hidden;
     }
+    .hero-video-wrap {
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
+      background: #0a1f14;
+    }
+    .hero-video-wrap iframe {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 177.78vh; /* 16/9 * 100vh */
+      height: 100vh;
+      min-width: 100%; min-height: 56.25vw; /* 9/16 * 100vw */
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      border: none;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(160deg, rgba(26,71,42,0.65) 0%, rgba(26,58,74,0.65) 100%);
+    }
+    .hero > *:not(.hero-video-wrap):not(.hero-overlay) { position: relative; z-index: 2; }
     .hero-badge {
       background: rgba(212,175,55,0.2); border: 1px solid #D4AF37;
       color: #D4AF37; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
@@ -179,6 +199,15 @@
 
 <!-- HERO -->
 <div class="hero">
+  <div class="hero-video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/WAO_ECvzvxA?autoplay=1&mute=1&loop=1&playlist=WAO_ECvzvxA&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      title="background video"
+    ></iframe>
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-badge">✦ Ultra Her Şey Dahil · Marmaris ✦</div>
   <h1>Grand Yazıcı <span>Club Turban</span><br>Thermal Resort</h1>
   <p>Marmaris'in kalbinde, termal suyun şifa verici gücü ile lüksü bir arada yaşayın. Unutulmaz bir tatil deneyimi sizi bekliyor.</p>

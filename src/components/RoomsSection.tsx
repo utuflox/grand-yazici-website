@@ -55,8 +55,8 @@ const RoomCard = ({
         </motion.div>
 
         {/* Hover overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-          <span className="w-full text-center px-4 py-2.5 text-[11px] font-light tracking-[0.2em] uppercase bg-accent text-background rounded-soft">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+          <span className="w-full text-center px-4 py-2.5 text-[11px] font-light tracking-[0.2em] uppercase bg-accent text-inkDark rounded-soft">
             Detayları Gör
           </span>
         </div>
@@ -76,7 +76,7 @@ const RoomCard = ({
           <h3 className="font-display text-xl lg:text-2xl font-light text-textPrimary leading-snug">
             {room.name}
           </h3>
-          <p className="text-textSecondary text-[11px] font-light mt-1.5 tracking-widest uppercase">
+          <p className="text-textSecondary/60 text-[11px] font-light mt-1.5 tracking-[0.15em] uppercase">
             {room.capacity} Kişi · {room.size} m²
           </p>
         </div>
@@ -124,14 +124,6 @@ export default function RoomsSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1.1, ease }}
           >
-            <motion.span
-              className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-soft text-[10px] font-light tracking-[0.3em] uppercase mb-6"
-              initial={{ opacity: 0, filter: 'blur(4px)' }}
-              animate={isInView ? { opacity: 1, filter: 'blur(0px)' } : {}}
-              transition={{ duration: 1.0, ease, delay: 0.1 }}
-            >
-              Konaklama
-            </motion.span>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-textPrimary mb-6 lg:mb-8 leading-tight">
               Rahatlığın Tanımı
             </h2>

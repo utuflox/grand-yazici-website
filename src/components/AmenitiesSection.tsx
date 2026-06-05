@@ -64,14 +64,6 @@ export default function AmenitiesSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.1, ease }}
         >
-          <motion.span
-            className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-soft text-[10px] font-light tracking-[0.3em] uppercase mb-6"
-            initial={{ opacity: 0, filter: 'blur(4px)' }}
-            animate={isInView ? { opacity: 1, filter: 'blur(0px)' } : {}}
-            transition={{ duration: 1.0, ease, delay: 0.1 }}
-          >
-            Olanaklar
-          </motion.span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-textPrimary mb-6 lg:mb-8 leading-tight">
             Sonsuz Seçenekler
           </h2>

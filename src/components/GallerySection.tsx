@@ -51,7 +51,7 @@ export default function GallerySection() {
         {/* Header */}
         <motion.div
           ref={sectionRef}
-          className="text-center mb-16 lg:mb-22"
+          className="text-center mb-16 lg:mb-20"
           initial={{ opacity: 0, y: 36 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.1, ease }}

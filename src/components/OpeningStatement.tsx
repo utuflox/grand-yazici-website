@@ -60,7 +60,7 @@ export default function OpeningStatement() {
         </div>
 
         {/* Gold divider */}
-        <div className="flex justify-center mb-14 lg:mb-18">
+        <div className="flex justify-center mb-14 lg:mb-16">
           <motion.div
             className="h-px bg-accent/45"
             initial={{ width: 0 }}

@@ -54,7 +54,7 @@ const RestaurantCard = ({ restaurant, index }: { restaurant: any; index: number 
       </div>
 
       <div>
-        <span className="inline-block px-2.5 py-1 bg-accent/10 text-accent text-[10px] font-light tracking-widest uppercase mb-2.5 rounded-soft">
+        <span className="inline-block text-accent/70 text-[10px] font-light tracking-[0.18em] uppercase mb-2.5">
           {restaurant.cuisine}
         </span>
         <h3 className="font-display text-lg lg:text-xl font-light text-textPrimary mb-1.5 leading-snug">
@@ -90,7 +90,7 @@ export default function DiningSection() {
         {/* Header */}
         <motion.div
           ref={sectionRef}
-          className="text-center mb-16 lg:mb-22"
+          className="text-center mb-16 lg:mb-20"
           initial={{ opacity: 0, y: 36 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.1, ease }}

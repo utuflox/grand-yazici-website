@@ -43,16 +43,6 @@ export default function CTASection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.1, ease }}
         >
-          {/* Badge */}
-          <motion.span
-            className="inline-block px-4 py-1.5 bg-accent/15 text-accent rounded-soft text-[10px] font-light tracking-[0.3em] uppercase mb-10"
-            initial={{ opacity: 0, filter: 'blur(4px)' }}
-            animate={isInView ? { opacity: 1, filter: 'blur(0px)' } : {}}
-            transition={{ duration: 1.0, ease, delay: 0.1 }}
-          >
-            Rezervasyon
-          </motion.span>
-
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-white mb-8 lg:mb-10 leading-tight">
             Tatil Hayali Burada Başlıyor
           </h2>

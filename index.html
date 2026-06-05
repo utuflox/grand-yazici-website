@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grand Yazıcı Club Turban Thermal – Marmaris</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #222; background: #fff; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(26,71,42,0.97);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem;
+    }
+    nav .logo { color: #D4AF37; font-size: 1.1rem; font-weight: 600; letter-spacing: 1px; }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul li a { color: #fff; font-size: 0.9rem; transition: color 0.3s; }
+    nav ul li a:hover { color: #D4AF37; }
+    .nav-book {
+      background: #D4AF37; color: #1a472a !important;
+      padding: 8px 20px; border-radius: 6px; font-weight: 600 !important;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      background: linear-gradient(160deg, #1a472a 0%, #2c5282 60%, #1a3a4a 100%);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 4rem 1rem; color: #fff;
+    }
+    .hero-badge {
+      background: rgba(212,175,55,0.2); border: 1px solid #D4AF37;
+      color: #D4AF37; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 20px; margin-bottom: 1.5rem;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; letter-spacing: 2px; margin-bottom: 1rem; }
+    .hero h1 span { color: #D4AF37; font-weight: 600; }
+    .hero p { font-size: 1.1rem; opacity: 0.85; max-width: 600px; line-height: 1.7; margin-bottom: 2.5rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      background: #D4AF37; color: #1a472a;
+      padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 0.95rem;
+      transition: all 0.3s; cursor: pointer; border: none;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(212,175,55,0.4); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1); color: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 14px 32px; border-radius: 6px; font-weight: 500; font-size: 0.95rem;
+      transition: all 0.3s; cursor: pointer;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-3px); }
+    .btn-whatsapp {
+      background: #25D366; color: #fff;
+      padding: 14px 32px; border-radius: 6px; font-weight: 600; font-size: 0.95rem;
+      transition: all 0.3s; display: inline-block;
+    }
+    .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37,211,102,0.4); }
+
+    /* INFO BAR */
+    .info-bar {
+      background: #f8f8f6; border-bottom: 1px solid #eee;
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+      padding: 1rem 2rem; font-size: 0.9rem; color: #555;
+    }
+    .info-bar span { display: flex; align-items: center; gap: 6px; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .section-full { padding: 5rem 2rem; background: #f8f8f6; }
+    .section-full > div { max-width: 1200px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 3rem; }
+    .section-title h2 { font-size: 2rem; font-weight: 300; color: #1a472a; margin-bottom: 0.5rem; }
+    .section-title p { color: #777; font-size: 1rem; }
+    .gold-line { width: 60px; height: 2px; background: #D4AF37; margin: 0.75rem auto; }
+
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+    .stat-card { text-align: center; padding: 2rem 1rem; background: #fff; border-radius: 12px; border: 1px solid #eee; }
+    .stat-card .number { font-size: 2.5rem; font-weight: 700; color: #D4AF37; }
+    .stat-card .label { font-size: 0.85rem; color: #777; margin-top: 0.5rem; }
+
+    /* ROOMS */
+    .rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .room-card {
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid #eee; transition: all 0.3s; cursor: pointer;
+      background: #fff;
+    }
+    .room-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); border-color: #D4AF37; }
+    .room-img { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .room-info { padding: 1.5rem; }
+    .room-info h3 { font-size: 1.1rem; color: #1a472a; margin-bottom: 0.5rem; }
+    .room-meta { display: flex; gap: 1rem; font-size: 0.82rem; color: #888; margin-bottom: 0.75rem; }
+    .room-info p { font-size: 0.9rem; color: #666; line-height: 1.5; margin-bottom: 1rem; }
+    .room-price { font-size: 1rem; font-weight: 700; color: #D4AF37; }
+
+    /* RESTAURANTS */
+    .rest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .rest-card {
+      padding: 1.5rem; background: #fff;
+      border-radius: 10px; border-left: 4px solid #D4AF37;
+      border: 1px solid #eee; border-left: 4px solid #D4AF37;
+      transition: all 0.3s;
+    }
+    .rest-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    .rest-card h3 { font-size: 1rem; color: #1a472a; margin-bottom: 0.4rem; }
+    .rest-card .cuisine { font-size: 0.85rem; color: #888; }
+    .rest-type { display: inline-block; margin-top: 0.5rem; font-size: 0.75rem; background: #f0f4f0; color: #1a472a; padding: 2px 10px; border-radius: 20px; }
+
+    /* FACILITIES */
+    .fac-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; }
+    .fac-item {
+      text-align: center; padding: 1rem 0.5rem;
+      background: #fff; border: 1px solid #eee; border-radius: 8px;
+      font-size: 0.85rem; color: #444; transition: all 0.3s; cursor: default;
+    }
+    .fac-item:hover { background: #D4AF37; color: #1a472a; font-weight: 600; border-color: #D4AF37; transform: translateY(-2px); }
+    .fac-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+
+    /* TESTIMONIALS */
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .test-card {
+      padding: 2rem; background: #fff; border-radius: 12px;
+      border: 1px solid #eee; transition: all 0.3s;
+      position: relative;
+    }
+    .test-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .test-card::before { content: '"'; font-size: 4rem; color: #D4AF37; opacity: 0.3; position: absolute; top: 0.5rem; left: 1rem; line-height: 1; }
+    .test-card p { font-size: 0.95rem; color: #555; line-height: 1.7; margin-bottom: 1rem; font-style: italic; }
+    .test-name { font-weight: 600; color: #1a472a; font-size: 0.9rem; }
+    .stars { color: #D4AF37; font-size: 0.9rem; margin-bottom: 0.75rem; }
+
+    /* BOOKING */
+    .booking-section {
+      background: linear-gradient(135deg, #1a472a 0%, #2c5282 100%);
+      padding: 5rem 2rem; text-align: center; color: #fff;
+    }
+    .booking-section h2 { font-size: 2rem; font-weight: 300; margin-bottom: 1rem; }
+    .booking-section p { font-size: 1rem; opacity: 0.85; margin-bottom: 2rem; }
+    .booking-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer { background: #111; color: #aaa; padding: 3rem 2rem; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto 2rem; }
+    .footer-col h4 { color: #D4AF37; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem; }
+    .footer-col p, .footer-col a { font-size: 0.85rem; line-height: 2; color: #999; display: block; transition: color 0.3s; }
+    .footer-col a:hover { color: #D4AF37; }
+    .footer-bottom { text-align: center; border-top: 1px solid #222; padding-top: 1.5rem; font-size: 0.8rem; color: #555; max-width: 1200px; margin: 0 auto; }
+    .social-links { display: flex; gap: 1rem; margin-top: 0.5rem; }
+    .social-links a { font-size: 1.2rem; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hero h1 { font-size: 1.8rem; }
+      .info-bar { gap: 1rem; font-size: 0.8rem; }
+      section { padding: 3rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">GRAND YAZICI ✦ THERMAL</div>
+  <ul>
+    <li><a href="#odalar">Odalar</a></li>
+    <li><a href="#restoranlar">Restoranlar</a></li>
+    <li><a href="#tesisler">Tesisler</a></li>
+    <li><a href="#iletisim">İletişim</a></li>
+    <li><a href="https://wa.me/905529821101" class="nav-book">Rezervasyon</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">✦ Ultra Her Şey Dahil · Marmaris ✦</div>
+  <h1>Grand Yazıcı <span>Club Turban</span><br>Thermal Resort</h1>
+  <p>Marmaris'in kalbinde, termal suyun şifa verici gücü ile lüksü bir arada yaşayın. Unutulmaz bir tatil deneyimi sizi bekliyor.</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/905529821101" class="btn-whatsapp">💬 WhatsApp ile Rezervasyon</a>
+    <button class="btn-primary" onclick="document.getElementById('odalar').scrollIntoView({behavior:'smooth'})">Odaları Keşfet</button>
+    <button class="btn-secondary" onclick="document.getElementById('tesisler').scrollIntoView({behavior:'smooth'})">Tesisleri Gör</button>
+  </div>
+</div>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <span>📞 +90 252 417 73 12</span>
+  <span>📍 İçmeler, Marmaris, Muğla</span>
+  <span>⭐ 4.5 / 5 Puan</span>
+  <span>🏊 Termal Havuzlar</span>
+  <span>🍽️ 6 Restoran</span>
+</div>
+
+<!-- STATS -->
+<section>
+  <div class="stats">
+    <div class="stat-card"><div class="number">6</div><div class="label">Oda Kategorisi</div></div>
+    <div class="stat-card"><div class="number">6</div><div class="label">A'la Carte Restoran</div></div>
+    <div class="stat-card"><div class="number">4</div><div class="label">Bar</div></div>
+    <div class="stat-card"><div class="number">15+</div><div class="label">Aktivite</div></div>
+    <div class="stat-card"><div class="number">∞</div><div class="label">Ultra Her Şey Dahil</div></div>
+  </div>
+</section>
+
+<!-- ODALAR -->
+<div class="section-full" id="odalar">
+  <div>
+    <div class="section-title">
+      <h2>Oda Kategorileri</h2>
+      <div class="gold-line"></div>
+      <p>Her ihtiyaca ve bütçeye uygun lüks konaklama seçenekleri</p>
+    </div>
+    <div class="rooms-grid">
+      <div class="room-card">
+        <div class="room-img" style="background:linear-gradient(135deg,#FFB74D,#FF8A65)">🛏️</div>
+        <div class="room-info">
+          <h3>Standart Oda</h3>
+          <div class="room-meta"><span>👤 3 Kişi</span><span>📐 26m²</span></div>
+          <p>Şık ve modern tasarımıyla konforlu konaklama. Premium yatak, klima, minibar dahil.</p>
+          <div class="room-price">Fiyat için arayın</div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-img" style="background:linear-gradient(135deg,#66BB6A,#26A69A)">🛏️</div>
+        <div class="room-info">
+          <h3>Superior Standart Oda</h3>
+          <div class="room-meta"><span>👤 3 Kişi</span><span>📐 30m²</span></div>
+          <p>Geniş balkon ve deniz manzarasıyla üst düzey konfor. Özel banyo amenityleri dahil.</p>
+          <div class="room-price">Fiyat için arayın</div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-img" style="background:linear-gradient(135deg,#5C6BC0,#8E24AA)">🛏️</div>
+        <div class="room-info">
+          <h3>Aile Odası</h3>
+          <div class="room-meta"><span>👤 4 Kişi</span><span>📐 38m²</span></div>
+          <p>Ara kapılı iki oda, aileler için tasarlandı. Çocuk karyolası talep üzerine sağlanır.</p>
+          <div class="room-price">Fiyat için arayın</div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-img" style="background:linear-gradient(135deg,#29B6F6,#26C6DA)">🌊</div>
+        <div class="room-info">
+          <h3>Junior Suite</h3>
+          <div class="room-meta"><span>👤 2 Kişi</span><span>📐 58m²</span></div>
+          <p>Eşsiz Akdeniz manzarası, ayrı oturma alanı ve özel jakuzi. Romantik kaçamaklar için ideal.</p>
+          <div class="room-price">Fiyat için arayın</div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-img" style="background:linear-gradient(135deg,#D4AF37,#F57F17)">⚓</div>
+        <div class="room-info">
+          <h3>Marine Suite</h3>
+          <div class="room-meta"><span>👤 5 Kişi</span><span>📐 110m²</span></div>
+          <p>Nefes kesen panoramik deniz manzarası. Butler hizmeti, özel teras ve premium oturma alanı.</p>
+          <div class="room-price">Fiyat için arayın</div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-img" style="background:linear-gradient(135deg,#1a472a,#2c5282)">👑</div>
+        <div class="room-info">
+          <h3>Grand Suite</h3>
+          <div class="room-meta"><span>👤 7 Kişi</span><span>📐 115-130m²</span></div>
+          <p>Otelin en prestijli süiti. 3 yatak odası, özel yüzme havuzu, 24 saat butler hizmeti.</p>
+          <div class="room-price">Fiyat için arayın</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESTORANLAR -->
+<section id="restoranlar">
+  <div class="section-title">
+    <h2>Restoranlar & Barlar</h2>
+    <div class="gold-line"></div>
+    <p>6 özel restoran ve 4 bar ile damak zevkinize hitap eden lezzetler</p>
+  </div>
+  <div class="rest-grid">
+    <div class="rest-card">
+      <h3>🍽️ Ege Restaurant</h3>
+      <p class="cuisine">Ana Restoran · Turkish & International</p>
+      <span class="rest-type">Açık Büfe</span>
+    </div>
+    <div class="rest-card">
+      <h3>🐟 La Querida</h3>
+      <p class="cuisine">Balık A'la Carte Restoran</p>
+      <span class="rest-type">Seafood</span>
+    </div>
+    <div class="rest-card">
+      <h3>🍝 Le Farfelle</h3>
+      <p class="cuisine">İtalyan A'la Carte Restoran</p>
+      <span class="rest-type">Italian Cuisine</span>
+    </div>
+    <div class="rest-card">
+      <h3>🥩 Steak House</h3>
+      <p class="cuisine">Et A'la Carte Restoran</p>
+      <span class="rest-type">Premium Meat</span>
+    </div>
+    <div class="rest-card">
+      <h3>🍜 Asya</h3>
+      <p class="cuisine">Uzak Doğu A'la Carte Restoran</p>
+      <span class="rest-type">Asian Fusion</span>
+    </div>
+    <div class="rest-card">
+      <h3>🫕 Kebap House</h3>
+      <p class="cuisine">Türk A'la Carte Restoran</p>
+      <span class="rest-type">Turkish Cuisine</span>
+    </div>
+    <div class="rest-card" style="border-left-color:#2c5282">
+      <h3>🍸 Grand Bar</h3>
+      <p class="cuisine">Ana Bar · Canlı Müzik</p>
+      <span class="rest-type" style="background:#e8f0fe;color:#2c5282">Bar</span>
+    </div>
+    <div class="rest-card" style="border-left-color:#2c5282">
+      <h3>☕ Coffee Corner</h3>
+      <p class="cuisine">Kahve & Çay Köşesi</p>
+      <span class="rest-type" style="background:#e8f0fe;color:#2c5282">Bar</span>
+    </div>
+    <div class="rest-card" style="border-left-color:#2c5282">
+      <h3>🏊 Pool Bar</h3>
+      <p class="cuisine">Havuz Başı Bar</p>
+      <span class="rest-type" style="background:#e8f0fe;color:#2c5282">Bar</span>
+    </div>
+    <div class="rest-card" style="border-left-color:#2c5282">
+      <h3>🏖️ Beach Bar</h3>
+      <p class="cuisine">Plaj Barı</p>
+      <span class="rest-type" style="background:#e8f0fe;color:#2c5282">Bar</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESİSLER -->
+<div class="section-full" id="tesisler">
+  <div>
+    <div class="section-title">
+      <h2>Tesisler & Aktiviteler</h2>
+      <div class="gold-line"></div>
+      <p>Her yaşa uygun aktiviteler ve dünya standartlarında tesisler</p>
+    </div>
+    <div class="fac-grid">
+      <div class="fac-item"><div class="fac-icon">🏊</div>Outdoor Pool</div>
+      <div class="fac-item"><div class="fac-icon">🌡️</div>Indoor Pool</div>
+      <div class="fac-item"><div class="fac-icon">♨️</div>Thermal Pools</div>
+      <div class="fac-item"><div class="fac-icon">💦</div>Aqua Park</div>
+      <div class="fac-item"><div class="fac-icon">🧒</div>Kids Club</div>
+      <div class="fac-item"><div class="fac-icon">🎭</div>Animation</div>
+      <div class="fac-item"><div class="fac-icon">🎵</div>Live Music</div>
+      <div class="fac-item"><div class="fac-icon">🎉</div>Themed Parties</div>
+      <div class="fac-item"><div class="fac-icon">💪</div>Fitness Center</div>
+      <div class="fac-item"><div class="fac-icon">🎾</div>Tennis</div>
+      <div class="fac-item"><div class="fac-icon">⚽</div>Mini Football</div>
+      <div class="fac-item"><div class="fac-icon">🏓</div>Table Tennis</div>
+      <div class="fac-item"><div class="fac-icon">🏐</div>Beach Volley</div>
+      <div class="fac-item"><div class="fac-icon">🤸</div>Water Aerobics</div>
+      <div class="fac-item"><div class="fac-icon">🎯</div>Dart</div>
+    </div>
+  </div>
+</div>
+
+<!-- YORUMLAR -->
+<section>
+  <div class="section-title">
+    <h2>Misafir Yorumları</h2>
+    <div class="gold-line"></div>
+    <p>Misafirlerimizin gerçek deneyimleri</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p>Harika bir tatil geçirdim. Thermal havuzlar müthiş, personel çok ilgili ve güler yüzlü. Kesinlikle tekrar geleceğim.</p>
+      <div class="test-name">— Ayşe Yılmaz, İstanbul</div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p>Marmaris'te en iyi all-inclusive otel. Restoranlar çok başarılı, müzik ve eğlence programı süper. Aile için mükemmel.</p>
+      <div class="test-name">— Mehmet Demir, Ankara</div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p>Amazing thermal experience! The staff was incredibly welcoming and professional. Highly recommended for families!</p>
+      <div class="test-name">— Sarah Johnson, UK</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<div class="booking-section">
+  <h2>Rezervasyonunuzu Şimdi Yapın</h2>
+  <p>2026 yaz sezonu dolmadan yerinizi ayırtın. Erken rezervasyona özel fiyatlar geçerlidir.</p>
+  <div class="booking-btns">
+    <a href="https://wa.me/905529821101" class="btn-whatsapp">💬 WhatsApp ile Rezervasyon</a>
+    <a href="tel:+902524177312" class="btn-primary">📞 Hemen Ara</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="iletisim">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Grand Yazıcı Thermal</h4>
+      <p>Marmaris'in en prestijli thermal resort oteli. Ultra her şey dahil konsept ile unutulmaz tatil deneyimi.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/grandyaziciclubturban" title="Instagram">📷</a>
+        <a href="https://www.facebook.com/clubturbanmarmaris" title="Facebook">📘</a>
+        <a href="https://www.youtube.com/channel/UCcQHTcYFuFEF7oSeRO2Nusg" title="YouTube">▶️</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>İletişim</h4>
+      <a href="tel:+902524177312">📞 +90 252 417 73 12</a>
+      <a href="https://wa.me/905529821101">💬 +90 552 982 11 01 (WA)</a>
+      <a href="mailto:info@grandyazicihotels.com">✉️ info@grandyazicihotels.com</a>
+    </div>
+    <div class="footer-col">
+      <h4>Adres</h4>
+      <p>İçmeler Mahallesi<br>101. Sokak No: 3<br>Marmaris / Muğla<br>Türkiye</p>
+    </div>
+    <div class="footer-col">
+      <h4>Hızlı Erişim</h4>
+      <a href="#odalar">Oda Kategorileri</a>
+      <a href="#restoranlar">Restoranlar</a>
+      <a href="#tesisler">Tesisler</a>
+      <a href="https://wa.me/905529821101">Rezervasyon</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Grand Yazıcı Club Turban Thermal. Tüm hakları saklıdır. | Designed with ♥ by UTUFLOX
+  </div>
+</footer>
+
+</body>
+</html>

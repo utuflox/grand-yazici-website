@@ -78,7 +78,7 @@ export const restaurants: Restaurant[] = [
     name: 'Ege Restaurant',
     cuisine: 'Türk / Uluslararası',
     description: 'Ana Restoran',
-    image: '/restaurants/ege-restaurant.webp',
+    image: '/restaurants/Ege-Restaurant.webp',
     type: 'restaurant',
   },
   {
@@ -86,7 +86,7 @@ export const restaurants: Restaurant[] = [
     name: 'La Querida',
     cuisine: 'Balık / Deniz Ürünleri',
     description: 'Balık A\'la Carte Restoranı',
-    image: '/restaurants/la-querida.webp',
+    image: '/restaurants/La-Querida.webp',
     type: 'restaurant',
   },
   {
@@ -94,7 +94,7 @@ export const restaurants: Restaurant[] = [
     name: 'Le Farfelle',
     cuisine: 'İtalyan',
     description: 'İtalyan A\'la Carte Restoranı & Snack Bar',
-    image: '/restaurants/le-farfelle.webp',
+    image: '/restaurants/La-Farfelle.webp',
     type: 'restaurant',
   },
   {
@@ -102,7 +102,7 @@ export const restaurants: Restaurant[] = [
     name: 'Steak House',
     cuisine: 'Et / Grill',
     description: 'Et A\'la Carte Restoranı & Snack Bar',
-    image: '/restaurants/steak-house.webp',
+    image: '/restaurants/Steak-House.webp',
     type: 'restaurant',
   },
   {
@@ -110,7 +110,7 @@ export const restaurants: Restaurant[] = [
     name: 'Asya',
     cuisine: 'Uzak Doğu / Asya',
     description: 'Uzak Doğu A\'la Carte Restoranı',
-    image: '/restaurants/asya.webp',
+    image: '/restaurants/Asya.webp',
     type: 'restaurant',
   },
   {
@@ -118,7 +118,7 @@ export const restaurants: Restaurant[] = [
     name: 'Kebap House',
     cuisine: 'Türk',
     description: 'Türk A\'la Carte Restoranı',
-    image: '/restaurants/kebap-house.webp',
+    image: '/restaurants/Kebap-House.webp',
     type: 'restaurant',
   },
   {

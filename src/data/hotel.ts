@@ -156,20 +156,20 @@ export const restaurants: Restaurant[] = [
 ];
 
 export const amenities: Amenity[] = [
-  { id: '1', name: 'Havuz', category: 'Water', icon: '🏊' },
-  { id: '2', name: 'Kapalı Havuz', category: 'Water', icon: '🏊‍♀️' },
-  { id: '3', name: 'Mini Kulüp', category: 'Kids', icon: '🎨' },
-  { id: '4', name: 'Masa Tenisi', category: 'Sports', icon: '🏓' },
-  { id: '5', name: 'Beach Volley', category: 'Sports', icon: '🏐' },
-  { id: '6', name: 'Su Jimnastiği', category: 'Water', icon: '🏋️' },
-  { id: '7', name: 'Dart', category: 'Entertainment', icon: '🎯' },
-  { id: '8', name: 'Fitness Center', category: 'Wellness', icon: '💪' },
-  { id: '9', name: 'Animasyon', category: 'Entertainment', icon: '🎪' },
-  { id: '10', name: 'Canlı Müzik', category: 'Entertainment', icon: '🎵' },
-  { id: '11', name: 'Temalı Partiler', category: 'Entertainment', icon: '🎉' },
-  { id: '12', name: 'Aqua Park', category: 'Water', icon: '🌊' },
-  { id: '13', name: 'Tenis', category: 'Sports', icon: '🎾' },
-  { id: '14', name: 'Mini Futbol Sahası', category: 'Sports', icon: '⚽' },
+  { id: '1', name: 'Havuz', category: 'Water', icon: 'havuz-icon' },
+  { id: '2', name: 'Kapalı Havuz', category: 'Water', icon: 'kapalıhavuz-icon' },
+  { id: '3', name: 'Mini Kulüp', category: 'Kids', icon: 'minikulüp-icon' },
+  { id: '4', name: 'Masa Tenisi', category: 'Sports', icon: 'masatenisi-icon' },
+  { id: '5', name: 'Beach Volley', category: 'Sports', icon: 'beach-volley-icon' },
+  { id: '6', name: 'Su Jimnastiği', category: 'Water', icon: 'su-jimnastiği-icon' },
+  { id: '7', name: 'Dart', category: 'Entertainment', icon: 'dart-icon' },
+  { id: '8', name: 'Fitness Center', category: 'Wellness', icon: 'fitness-center-icon' },
+  { id: '9', name: 'Animasyon', category: 'Entertainment', icon: 'animasyon-icon' },
+  { id: '10', name: 'Canlı Müzik', category: 'Entertainment', icon: 'canlı-müzik-icon' },
+  { id: '11', name: 'Temalı Partiler', category: 'Entertainment', icon: 'temalı-partiler-icon' },
+  { id: '12', name: 'Aqua Park', category: 'Water', icon: 'aqua-park-icon' },
+  { id: '13', name: 'Tenis', category: 'Sports', icon: 'tenis-icon' },
+  { id: '14', name: 'Mini Futbol Sahası', category: 'Sports', icon: 'mini-futbol-sahası-icon' },
 ];
 
 export const navigationLinks = [

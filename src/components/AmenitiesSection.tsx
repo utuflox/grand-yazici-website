@@ -25,7 +25,7 @@ const AmenityCard = ({ amenity, index }: { amenity: any; index: number }) => {
         transition={{ duration: 0.35, ease }}
       >
         <Image
-          src={`/amenities/${encodeURIComponent(amenity.name)}.webp`}
+          src={`/amenities/${amenity.icon}.webp`}
           alt={amenity.name}
           width={40}
           height={40}
